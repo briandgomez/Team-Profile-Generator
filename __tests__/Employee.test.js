@@ -68,4 +68,8 @@ describe('method test', () => {
             expect(employee.email).toEqual('name@email.com')
         })
     })
+
+    test('returns "Employee" ', () => {
+        expect(employee.getRole()).toEqual({"email": "name@email.com", "id": 0, "name": "brian"});
+    })
 });

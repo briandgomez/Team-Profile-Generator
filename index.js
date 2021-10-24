@@ -1,6 +1,3 @@
-const fs = require('fs');
-const inquirer = require('inquirer');
-
 /*
 Questions
 
@@ -29,6 +26,6 @@ Finish building team:
 -Exit application and create html
 */
 
-const teamGenerator = require('./lib/Parent');
+const teamGenerator = require('./lib/Employee');
 
-new teamGenerator().sameQuestions();
+new teamGenerator().getName();

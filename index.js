@@ -2,6 +2,9 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const generatePage = require('./src/page-template');
+
+responseArray = [];
 
 //Array of questions that all classes have
 questionsArray = [
@@ -34,7 +37,8 @@ function createManager() {
     ])
         .then(results => {
             const newManager = new Manager(results.name, results.id, results.email, results.officeNumber);
-            console.log(newManager);
+            responseArray.push(newManager);
+            //console.log(responseArray);
             menuOption();
         })
 }
@@ -54,7 +58,10 @@ function menuOption() {
             else if (results.option == 'Intern' || results.option == 'intern') {
                 createIntern();
             }
-    })
+            else if (results.option == 'No' || results.option == 'no') {
+                return dataFunction(responseArray);
+            }
+        })
 }
 
 function createEngineer() {
@@ -68,8 +75,9 @@ function createEngineer() {
     ])
         .then(results => {
             const newEngineer = new Engineer(results.name, results.id, results.email, results.github);
-            console.log(newEngineer);
-            createIntern();
+            responseArray.push(newEngineer);
+            //console.log(responseArray);
+            menuOption();
         })
 }
 
@@ -84,7 +92,14 @@ function createIntern() {
     ])
         .then(results => {
             const newIntern = new Intern(results.name, results.id, results.email, results.school);
-            console.log(newIntern);
+            responseArray.push(newIntern);
+            //console.log(responseArray);
+            menuOption();
         })
 }
-createManager();
+
+function dataFunction(results) {
+    generatePage(results);
+}
+
+createManager()

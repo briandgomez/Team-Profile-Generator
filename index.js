@@ -3,7 +3,9 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template');
+const { writeFile } = require('./src/generate-site');
 
+//Holds information inputeed by user
 responseArray = [];
 
 //Array of questions that all classes have
@@ -37,6 +39,7 @@ function createManager() {
     ])
         .then(results => {
             const newManager = new Manager(results.name, results.id, results.email, results.officeNumber);
+            newManager
             responseArray.push(newManager);
             //console.log(responseArray);
             menuOption();
@@ -59,7 +62,7 @@ function menuOption() {
                 createIntern();
             }
             else if (results.option == 'No' || results.option == 'no') {
-                return dataFunction(responseArray);
+                return arrayResults(responseArray);
             }
         })
 }
@@ -98,7 +101,7 @@ function createIntern() {
         })
 }
 
-function dataFunction(results) {
+function arrayResults(results) {
     generatePage(results);
 }
 

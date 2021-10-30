@@ -1,19 +1,32 @@
 module.exports = templateData => {
 
-    const inputArray = [...employees] = templateData;
-    //console.log(inputArray)
-    const getNameArray = inputArray.map(prop => prop.name);
-    const getIdArray = inputArray.map(prop => prop.id);
-    const getEmailArray = inputArray.map(prop => prop.email);
-    const getRole = inputArray.map(prop => prop.email);
+    const inputArray = templateData;
+    console.log(inputArray)
 
-    console.log(getNameArray, getIdArray, getEmailArray, getRole);
-    
-    function generateHTML() {
+    let HTML = ''
+    for (var i = 0; i < inputArray.length; i++) {
+        console.log(inputArray[i]);
+        const { name, id, email, role, ...rest } = inputArray[i];
 
-    };
+        HTML +=
+            `
+        <div class="card d-flex m-3 rounded shadow-lg" style="width: 15rem;">
+            <div class="card-body bg-primary text-white">
+                <h5 class="card-title">${name}</h5>
+                <p class="card-text">${role}</p>
+            </div>
+            <div class="border border-dark rounded m-4">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">${id}</li>
+                    <li class="list-group-item">${email}</li>
+                    <li class="list-group-item">${rest}</li>
+                </ul>
+            </div>
+        </div>
+        `
+    }
 
-    return `
+    return Promise.resolve(`
     <!DOCTYPE html>
     <html lang="en">
     
@@ -23,19 +36,20 @@ module.exports = templateData => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team Generator</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./style.css">
     </head>
     
     <body>
         <h1 class="text-center text-light bg-danger py-4">
             My Team
         </h1>
-
+    
         <div class="container">
-            <div class="row"></div>
+            <div class="row">${HTML}</div>
         </div>
-
-        <script src="https://code.jquery.com/jquery.js"></script>
     </body>
     
-    </html>`
+    </html>
+`
+    )
 }

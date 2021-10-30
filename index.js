@@ -1,9 +1,9 @@
+const fs = require('fs');
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template');
-const { writeFile } = require('./src/generate-site');
 
 //Holds information inputeed by user
 responseArray = [];
@@ -102,7 +102,18 @@ function createIntern() {
 }
 
 function arrayResults(results) {
-    generatePage(results);
+    generatePage(results)
+        .then(html => {
+            console.log(html)
+            fs.writeFile('./dist/index.html', html, function (err) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log('Page Successfully created');
+                }
+            })
+        })
 }
 
 createManager()

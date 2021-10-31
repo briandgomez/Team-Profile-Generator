@@ -1,12 +1,17 @@
 module.exports = templateData => {
 
     const inputArray = templateData;
-    console.log(inputArray)
 
     let HTML = ''
     for (var i = 0; i < inputArray.length; i++) {
-        console.log(inputArray[i]);
         const { name, id, email, role, ...rest } = inputArray[i];
+        //console.log(rest);
+        let lastProp = Object.entries(rest).map(function (array) {
+            if (array[0] == 'github') {
+                return `<a href="https://github.com/${array[1]}">${array[1]}</a>`;
+            }
+            return array[1];
+        });
 
         HTML +=
             `
@@ -18,8 +23,8 @@ module.exports = templateData => {
             <div class="border border-dark rounded m-4">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">${id}</li>
-                    <li class="list-group-item">${email}</li>
-                    <li class="list-group-item">${rest}</li>
+                    <li class="list-group-item"><a href="mailto:${email}">${email}</a></li>
+                    <li class="list-group-item">${lastProp}</li>
                 </ul>
             </div>
         </div>

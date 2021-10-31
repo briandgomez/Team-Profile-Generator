@@ -1,12 +1,13 @@
-## Team Generator
+# Team Generator
 
-# Description
+## Description
 The following application allows users to create a a HTML webpage for a software engineering team. This applications takes in users input and displays the inputs as a summary for each person. It specifically displays the individuals name, role within the team, ID, email, office number, Github link, and school name.The purpose of this application is to help software engineers and/or others to organize their teams quickly and effciently.
 
 
-# Team Generator Example
+## Team Generator Example
+![image](https://user-images.githubusercontent.com/69539559/139604409-2b72575c-566b-4947-ba57-f44bd10a5edf.png)
 
-# Features
+## Features
 * HTML
 * CSS
     * Bootsrap
@@ -18,5 +19,5 @@ The following application allows users to create a a HTML webpage for a software
     * Promises
 * OOP
 
-# Walkthrough Link
+## Walkthrough Link
 https://watch.screencastify.com/v/ffMxLKeVl6u4Tmxpvgpw

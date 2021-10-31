@@ -5,7 +5,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template');
 
-//Holds information inputeed by user
+//Holds information provided by user
 responseArray = [];
 
 //Array of questions that all classes have
@@ -13,7 +13,7 @@ questionsArray = [
     {
         type: 'input',
         name: 'name',
-        message: 'What is their name?: '
+        message: "What is your employee's name?: ",
     },
     {
         type: 'input',
@@ -35,7 +35,7 @@ function createManager() {
             type: 'input',
             name: 'officeNumber',
             message: 'What is their office number?: '
-        },
+        }
     ])
         .then(results => {
             const newManager = new Manager(results.name, results.id, results.email, results.officeNumber);
@@ -51,7 +51,7 @@ function menuOption() {
         {
             type: 'input',
             name: 'option',
-            message: 'Would you like to add a engineer or intern?: '
+            message: "Would you like to add a engineer or intern? If not type 'No': "
         }
     ])
         .then(results => {

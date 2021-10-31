@@ -5,7 +5,6 @@ module.exports = templateData => {
     let HTML = ''
     for (var i = 0; i < inputArray.length; i++) {
         const { name, id, email, role, ...rest } = inputArray[i];
-        //console.log(rest);
         let lastProp = Object.entries(rest).map(function (array) {
             if (array[0] == 'github') {
                 return `<a href="https://github.com/${array[1]}">${array[1]}</a>`;
@@ -13,18 +12,30 @@ module.exports = templateData => {
             return array[1];
         });
 
+        let lastHTML = Object.entries(rest).map(function (array) {
+            if (array[0] == 'github') {
+                return 'Github: ';
+            }
+            else if (array[0] == 'school') {
+                return 'School: '
+            }
+            else if (array[0] == 'officeNumber') {
+                return 'Office: '
+            }
+        });
+
         HTML +=
             `
         <div class="card d-flex m-3 rounded shadow-lg" style="width: 15rem;">
             <div class="card-body bg-primary text-white">
                 <h5 class="card-title">${name}</h5>
-                <p class="card-text">${role}</p>
+                <p class="card-text"><i class="fas fa-mug-hot"></i> ${role}</p>
             </div>
             <div class="border border-dark rounded m-4">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">${id}</li>
-                    <li class="list-group-item"><a href="mailto:${email}">${email}</a></li>
-                    <li class="list-group-item">${lastProp}</li>
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
+                    <li class="list-group-item" hello>${lastHTML}${lastProp}</li>
                 </ul>
             </div>
         </div>

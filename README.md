@@ -7,7 +7,7 @@ The following application allows users to create a a HTML webpage for a software
 ## Team Generator Example
 ![image](https://user-images.githubusercontent.com/69539559/139604409-2b72575c-566b-4947-ba57-f44bd10a5edf.png)
 
-## Features
+## Tools
 * HTML
 * CSS
     * Bootsrap

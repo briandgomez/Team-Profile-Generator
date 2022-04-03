@@ -2,6 +2,10 @@ const Employee = require('../lib/Employee');
 let employee;
 
 //Tests for constructor
+//String = describes what the expected output should be
+//Callback = runs the test
+
+//describe = groups together related tests
 describe('constructor function test', () => {
     //Creates new employee instance for each test before they execute
     beforeEach(() => {
